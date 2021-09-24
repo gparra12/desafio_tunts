@@ -105,12 +105,22 @@ def checking_status(worksheet, data):  # Method that checks the status of all st
             
     getting_log(students, status)
     
-    
+    return students, status
 if __name__ == '__main__':
     worksheet = activating() # Initialize the worksheet object
-    try:
+    try: # Exception treatment
         data = getting_data(worksheet) # Get the data from the spreadsheet
-        checking_status(worksheet, data) # Check the status of students
-    except gspread.exceptions.APIError: 
+        students, status = checking_status(worksheet, data) # Check the status of students and assign in the students and status list
+        
+    except IndexError: # Exception for when the number of grades is less than the number of students
+        print(" ")
+        print("Something is wrong, maybe the number of students has changed.")
+      
+    except gspread.exceptions.APIError: # Exception for when the number of write requests per minute per use is greater than quota metric
+        print(" ")
         print("Google Spreadsheet API has a limit of write requests per minute per user, please restarth the app! Thank you!")
         # Quota exceeded for quota metric 'Write requests' and limit 'Write requests per minute per user' of service 'sheets.googleapis.com'
+        
+    else: # If everything went fine print "Everything OK!"
+        print(" ")
+        print("Everything OK!")
