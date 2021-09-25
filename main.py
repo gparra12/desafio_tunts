@@ -17,15 +17,16 @@ def activating(): # Method that checks and authorizes editing of the spreadsheet
 
     return worksheet # Return the worksheet object
 
-def student_number_checker(test1_aux, test2_aux, test3_aux, skip_class_aux, registration):
+def student_number_checker(test1_aux, test2_aux, test3_aux, skip_class_aux, registration, name):
     is_ok = True
-    len_test1 = (len(test1_aux) - 3)
-    len_test2 = (len(test2_aux) - 3)
-    len_test3 = (len(test3_aux) - 3)
-    len_skip_class = (len(skip_class_aux) - 3)
-    len_registration = (len(registration) - 3)
+    len_test1 = len(test1_aux) - 3
+    len_test2 = len(test2_aux) - 3
+    len_test3 = len(test3_aux) - 3
+    len_skip_class = len(skip_class_aux) - 3
+    len_registration = len(registration) - 3
+    len_name = len(registration) - 3
     
-    if len_test1 == len_test2 and len_test2 == len_test3 and len_test3 == len_skip_class and len_skip_class == len_registration:
+    if len_test1 == len_test2 and len_test2 == len_test3 and len_test3 == len_skip_class and len_skip_class == len_registration and len_registration == len_name:
         is_ok = True
         
     else:
@@ -35,11 +36,13 @@ def student_number_checker(test1_aux, test2_aux, test3_aux, skip_class_aux, regi
 
 def getting_data(worksheet): # Method that takes all necessary data
     registration = worksheet.col_values(1) # Variable to control the number of students per enrollment
+    name = worksheet.col_values(2) #
     skip_class_aux = worksheet.col_values(3) # Takes the entire column where the grade of the first test is stored
     test1_aux = worksheet.col_values(4) # Takes the entire column where the grade of the first test is stored
     test2_aux = worksheet.col_values(5) # Takes the entire column where the grade of the second test is stored
     test3_aux = worksheet.col_values(6) # Takes the entire column where each student's absentee number is stored 
 
+    
     number_students_is_ok = True
     
     test1 = []
@@ -47,7 +50,7 @@ def getting_data(worksheet): # Method that takes all necessary data
     test3 = []
     skip_classes = []
     
-    number_students_is_ok = student_number_checker(test1_aux, test2_aux, test3_aux, skip_class_aux, registration)
+    number_students_is_ok = student_number_checker(test1_aux, test2_aux, test3_aux, skip_class_aux, registration, name)
     
     if number_students_is_ok == True:
         print("Getting data...")
@@ -67,13 +70,14 @@ def getting_data(worksheet): # Method that takes all necessary data
     
 
 def getting_log(students, status, registration): # Log method that tracks application status
+    students_lenght = len(registration) - 3
     print(" ")
     print("Getting the log..")
-    for x in tqdm(range(len(registration) - 3)):
+    for x in tqdm(range(3, len(registration))):
         time.sleep(0.02)
  
     print(" ")
-    for x in range(len(registration) - 3): # For loop that print name and status of students
+    for x in range(students_lenght): # For loop that print name and status of students
         time.sleep(0.04)
         print(f"Name: {students[x]} --- Status: {status[x]} --- OK!")
         
@@ -83,7 +87,7 @@ def checking_status(worksheet, data, registration):  # Method that checks the st
     status = []
     sum = 0
     average = 0
-    students_lenght = (len(registration) - 3)
+    students_lenght = len(registration) - 3
     
     print(" ")
     print("Checking status...")

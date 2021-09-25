@@ -29,3 +29,10 @@
 >"python3 -u path_to_files/main.py" // **Example:** "python3 -u E:\Projetos\Desafio_Tunts\main.py"
 
 _Observation: in **Windows** we use the backslash (" \\ ") to identify the file_path diferently from **Linux** or **MacOs** where we use the normal bar (" / ")._
+
+&nbsp;
+
+## Bonus Features
+>* Support for add or remove students from spreadsheet;
+>* Exception treatments;
+>* Log 100% functional and interactive;
