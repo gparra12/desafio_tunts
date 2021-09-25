@@ -1,8 +1,9 @@
 # Desafio Tunts
 
 ## Depedencies
-### First create a virtual environment (venv) using the following command:
->"python -m venv venv_name" // **Example:** "python -m venv Desafio_Tunts"
+### First create a virtual environment (venv) using one of this following commands:
+>"python -m venv venv_name" // **Example:** "python -m venv Desafio_Tunts"  
+>"python3 -m venv venv_name" // **Example:** "python3 -m venv Desafio_Tunts"
 
 &nbsp;
 
