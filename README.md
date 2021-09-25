@@ -1,7 +1,11 @@
 # Desafio Tunts
 
 ## Depedencies
-### First create a virtual environment (venv) using one of this following commands:
+### First, if you are using Windows, install [Python](https://www.python.org/downloads/windows/), if you use Linux it is already downloaded by default, but if you want to ensure download it from [here](https://www.python.org/downloads/release/python-397/) or using this command in terminal: "**sudo apt-get install python3-pip**". 
+
+&nbsp;
+
+### After install Python, create a virtual environment (venv) using one of this following commands:
 >"python -m venv venv_name" // **Example:** "python -m venv Desafio_Tunts"  
 >"python3 -m venv venv_name" // **Example:** "python3 -m venv Desafio_Tunts"
 
